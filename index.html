@@ -6,7 +6,7 @@
     <title>جينا ندور حلالنا</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600&family=Baloo+Bhaijaan+2:wght@400;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
             --espresso: #2A1D15;
@@ -14,6 +14,8 @@
             --sand: #F5EBD4;
             --saffron: #E8953E;
             --ink: #261A12;
+            --tape: rgba(224, 192, 112, 0.42);
+            --polaroid: #FBF7EC;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -24,56 +26,98 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 24px;
+            padding: 34px 24px;
             background:
-                radial-gradient(60% 45% at 50% 38%, rgba(232, 149, 62, 0.10), transparent 70%),
-                radial-gradient(90% 80% at 15% 108%, rgba(232, 149, 62, 0.06), transparent 60%),
+                radial-gradient(120% 120% at 50% 42%, rgba(0, 0, 0, 0) 55%, rgba(0, 0, 0, 0.42) 100%),
+                radial-gradient(46% 40% at 50% 40%, rgba(232, 149, 62, 0.14), transparent 72%),
+                radial-gradient(24% 18% at 16% 18%, rgba(232, 149, 62, 0.07), transparent 70%),
+                radial-gradient(24% 18% at 84% 82%, rgba(232, 149, 62, 0.07), transparent 70%),
                 var(--espresso);
             direction: rtl;
         }
 
+        /* the warning note — a lined sheet of paper pinned to the wall */
         .panel {
             position: relative;
-            max-width: 680px;
+            max-width: 660px;
             width: 100%;
-            background: var(--sand);
-            border: 1px solid rgba(38, 26, 18, 0.14);
-            border-radius: 28px;
-            padding: clamp(40px, 7vw, 72px) clamp(24px, 6vw, 64px);
+            background-color: var(--sand);
+            background-image:
+                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E"),
+                repeating-linear-gradient(to bottom, transparent 0 31px, rgba(38, 26, 18, 0.05) 31px 32px);
+            border: 1px solid rgba(38, 26, 18, 0.16);
+            border-radius: 18px;
+            padding: clamp(44px, 6vw, 68px) clamp(26px, 6vw, 60px);
             text-align: center;
-            overflow: hidden;
+            transform: rotate(-1.2deg);
             box-shadow:
-                0 1px 0 rgba(255, 255, 255, 0.6) inset,
-                0 24px 60px -20px rgba(0, 0, 0, 0.55);
+                0 1px 0 rgba(255, 255, 255, 0.7) inset,
+                0 1px 0 rgba(38, 26, 18, 0.1),
+                0 34px 70px -26px rgba(0, 0, 0, 0.65);
         }
 
-        /* faint warm halo resting behind the headline */
-        .panel::before {
-            content: "";
+        /* warm halo behind the headline, clipped to the sheet's rounded corners */
+        .panel .halo {
             position: absolute;
-            top: -28%;
-            left: 50%;
-            width: 130%;
-            height: 60%;
-            transform: translateX(-50%);
-            background: radial-gradient(50% 100% at 50% 100%, rgba(232, 149, 62, 0.18), transparent 72%);
+            inset: 0;
+            border-radius: inherit;
+            overflow: hidden;
+            z-index: 0;
+            background: radial-gradient(52% 90% at 50% 4%, rgba(232, 149, 62, 0.18), transparent 72%);
             pointer-events: none;
         }
 
-        h1 {
+        /* translucent tape holding the sheet */
+        .tape {
+            position: absolute;
+            z-index: 4;
+            width: 118px;
+            height: 30px;
+            background: var(--tape);
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.16), inset 0 0 0 1px rgba(255, 255, 255, 0.18);
+            pointer-events: none;
+        }
+        .tape--l {
+            top: -14px;
+            right: 9%;
+            transform: rotate(-7deg);
+        }
+        .tape--r {
+            top: -14px;
+            left: 9%;
+            transform: rotate(6deg);
+        }
+
+        .warn,
+        h1,
+        .figure {
             position: relative;
+            z-index: 3;
+        }
+
+        .warn {
+            font-weight: 600;
+            font-size: clamp(1rem, 2.4vw, 1.26rem);
+            line-height: 2;
+            color: rgba(38, 26, 18, 0.78);
+            max-width: 30em;
+            margin: 0 auto 24px;
+        }
+
+        h1 {
             color: var(--ink);
-            font-weight: 900;
-            font-size: clamp(1.8rem, 5.2vw, 3.3rem);
-            line-height: 1.95;
+            font-family: 'Baloo Bhaijaan 2', 'Cairo', sans-serif;
+            font-weight: 800;
+            font-size: clamp(1.75rem, 5.2vw, 3.35rem);
+            line-height: 1.85;
             letter-spacing: -0.01em;
         }
 
-        /* the punchline clause — brush-swept */
+        /* the punchline clause — hand-swept */
         .clause {
             position: relative;
             display: inline-block;
-            padding-bottom: 0.28em;
+            padding-bottom: 0.3em;
         }
 
         .clause .brush {
@@ -93,22 +137,68 @@
             opacity: 0.9;
         }
 
+        /* the graffiti — a taped Polaroid */
+        .figure {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 10px 10px 24px;
+            background: var(--polaroid);
+            border: 1px solid rgba(38, 26, 18, 0.08);
+            border-radius: 4px;
+            box-shadow: 0 20px 38px -16px rgba(0, 0, 0, 0.55);
+            transform: rotate(1.6deg);
+        }
+
+        .figure img {
+            display: block;
+            max-width: min(70vw, 280px);
+            width: 100%;
+            height: auto;
+            border-radius: 2px;
+        }
+
+        .figure .tape--c {
+            top: -14px;
+            left: 50%;
+            transform: translateX(-50%) rotate(2deg);
+            width: 88px;
+        }
+
         @media (max-width: 560px) {
             .clause .brush path { stroke-width: 8; }
-            .panel { border-radius: 20px; }
+            .panel { transform: rotate(-0.6deg); border-radius: 14px; }
+            .tape--l, .tape--r { width: 84px; }
+        }
+
+        @media (prefers-reduced-motion: no-preference) {
+            .clause .brush path {
+                animation: inked 0.9s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+            }
+            @keyframes inked {
+                from { stroke-dasharray: 900; stroke-dashoffset: 900; }
+                to   { stroke-dasharray: 900; stroke-dashoffset: 0; }
+            }
         }
     </style>
 </head>
 <body>
     <div class="panel">
+        <div class="halo" aria-hidden="true"></div>
+        <div class="tape tape--l" aria-hidden="true"></div>
+        <div class="tape tape--r" aria-hidden="true"></div>
+        <p class="warn">عزيزي الزائر، ينصح بعدم تصفح هذا الموقع لأنه مليان أخطاء برمجية وثغرات تقلب المعدة!</p>
         <h1>
-            جينا ندور حلالنا،
-            <span class="clause">وفره في جيبك
+            حنا بس جينا ناخذ حلالنا ونمشي،
+            <span class="clause">وموقعك الفاشل هذا خذه وتهنّى فيه..
                 <svg class="brush" viewBox="0 0 300 34" preserveAspectRatio="none" aria-hidden="true">
                     <path d="M4 24 C 55 30, 100 12, 150 20 S 245 10, 296 22" />
                 </svg>
             </span>
         </h1>
+        <div class="figure">
+            <div class="tape tape--c" aria-hidden="true"></div>
+            <img src="neededGif.gif" alt="رد فعل" loading="lazy">
+        </div>
     </div>
 </body>
 </html>
