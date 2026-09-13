@@ -6,16 +6,16 @@
     <title>جينا ندور حلالنا</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600&family=Baloo+Bhaijaan+2:wght@400;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --espresso: #2A1D15;
             --espresso-soft: #3A2B20;
-            --sand: #F5EBD4;
-            --saffron: #E8953E;
+            --paper: #F1E6CE;
+            --accent: #F3182C;
+            --accent-deep: #A80F1F;
             --ink: #261A12;
-            --tape: rgba(224, 192, 112, 0.42);
-            --polaroid: #FBF7EC;
+            --tape: rgba(243, 24, 44, 0.34);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -26,179 +26,189 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 34px 24px;
+            padding: 38px 22px;
             background:
                 radial-gradient(120% 120% at 50% 42%, rgba(0, 0, 0, 0) 55%, rgba(0, 0, 0, 0.42) 100%),
-                radial-gradient(46% 40% at 50% 40%, rgba(232, 149, 62, 0.14), transparent 72%),
-                radial-gradient(24% 18% at 16% 18%, rgba(232, 149, 62, 0.07), transparent 70%),
-                radial-gradient(24% 18% at 84% 82%, rgba(232, 149, 62, 0.07), transparent 70%),
+                radial-gradient(46% 40% at 50% 40%, rgba(243, 24, 44, 0.11), transparent 72%),
+                radial-gradient(24% 18% at 16% 18%, rgba(243, 24, 44, 0.06), transparent 70%),
+                radial-gradient(24% 18% at 84% 82%, rgba(243, 24, 44, 0.06), transparent 70%),
                 var(--espresso);
             direction: rtl;
         }
 
-        /* the warning note — a lined sheet of paper pinned to the wall */
+        /* the writ — an aged parchment leaf */
         .panel {
             position: relative;
-            max-width: 660px;
+            max-width: 720px;
             width: 100%;
-            background-color: var(--sand);
+            background-color: var(--paper);
             background-image:
                 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E"),
-                repeating-linear-gradient(to bottom, transparent 0 31px, rgba(38, 26, 18, 0.05) 31px 32px);
-            border: 1px solid rgba(38, 26, 18, 0.16);
-            border-radius: 18px;
-            padding: clamp(44px, 6vw, 68px) clamp(26px, 6vw, 60px);
+                radial-gradient(120% 95% at 50% 28%, rgba(74, 46, 22, 0) 55%, rgba(74, 46, 22, 0.13) 100%);
+            border: 1px solid rgba(38, 26, 18, 0.18);
+            border-radius: 14px;
+            padding: clamp(48px, 7vw, 80px) clamp(22px, 5.5vw, 58px);
             text-align: center;
-            transform: rotate(-1.2deg);
             box-shadow:
-                0 1px 0 rgba(255, 255, 255, 0.7) inset,
-                0 1px 0 rgba(38, 26, 18, 0.1),
+                0 1px 0 rgba(255, 255, 255, 0.65) inset,
                 0 34px 70px -26px rgba(0, 0, 0, 0.65);
         }
 
-        /* warm halo behind the headline, clipped to the sheet's rounded corners */
+        /* formal red letterhead frame */
+        .panel::after {
+            content: "";
+            position: absolute;
+            inset: 14px;
+            border: 1.5px double rgba(243, 24, 44, 0.4);
+            border-radius: 8px;
+            pointer-events: none;
+        }
+
+        /* faint red glow at the top, clipped to the leaf */
         .panel .halo {
             position: absolute;
             inset: 0;
             border-radius: inherit;
             overflow: hidden;
             z-index: 0;
-            background: radial-gradient(52% 90% at 50% 4%, rgba(232, 149, 62, 0.18), transparent 72%);
+            background: radial-gradient(52% 70% at 50% 2%, rgba(243, 24, 44, 0.1), transparent 70%);
             pointer-events: none;
         }
 
-        /* translucent tape holding the sheet */
-        .tape {
+        /* the wax seal — official warning stamp */
+        .seal {
             position: absolute;
-            z-index: 4;
-            width: 118px;
-            height: 30px;
-            background: var(--tape);
-            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.16), inset 0 0 0 1px rgba(255, 255, 255, 0.18);
-            pointer-events: none;
+            bottom: -20px;
+            left: -8px;
+            width: 78px;
+            height: 78px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 38% 30%, #F8575F, var(--accent) 45%, var(--accent-deep));
+            box-shadow:
+                0 14px 26px -10px rgba(0, 0, 0, 0.55),
+                inset 0 0 0 2px rgba(255, 255, 255, 0.14),
+                inset 0 -8px 14px rgba(0, 0, 0, 0.3);
+            transform: rotate(-14deg);
+            z-index: 5;
+            display: grid;
+            place-items: center;
         }
-        .tape--l {
-            top: -14px;
-            right: 9%;
-            transform: rotate(-7deg);
+        .seal::before {
+            content: "";
+            position: absolute;
+            inset: 9px;
+            border: 2px solid rgba(255, 255, 255, 0.18);
+            border-radius: 50%;
         }
-        .tape--r {
-            top: -14px;
-            left: 9%;
-            transform: rotate(6deg);
+        .seal::after {
+            content: "✦";
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 1.5rem;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
         }
 
-        .warn,
-        h1,
-        .figure {
+        .intro,
+        .punch,
+        .figure,
+        .divider,
+        .solemn,
+        .verse {
             position: relative;
             z-index: 3;
         }
 
-        .warn {
+        .intro {
             font-weight: 600;
-            font-size: clamp(1rem, 2.4vw, 1.26rem);
-            line-height: 2;
-            color: rgba(38, 26, 18, 0.78);
-            max-width: 30em;
-            margin: 0 auto 24px;
+            font-size: clamp(1rem, 2.3vw, 1.28rem);
+            line-height: 2.05;
+            color: rgba(38, 26, 18, 0.8);
+            max-width: 32em;
+            margin: 0 auto 22px;
         }
 
-        h1 {
-            color: var(--ink);
-            font-family: 'Baloo Bhaijaan 2', 'Cairo', sans-serif;
-            font-weight: 800;
-            font-size: clamp(1.75rem, 5.2vw, 3.35rem);
+        .punch {
+            font-weight: 900;
+            font-size: clamp(1.55rem, 4.6vw, 2.9rem);
             line-height: 1.85;
+            color: var(--ink);
             letter-spacing: -0.01em;
         }
 
-        /* the punchline clause — hand-swept */
-        .clause {
-            position: relative;
-            display: inline-block;
-            padding-bottom: 0.3em;
-        }
-
-        .clause .brush {
-            position: absolute;
-            left: -4%;
-            right: -4%;
-            bottom: 0;
-            height: 0.34em;
-            overflow: visible;
-        }
-
-        .clause .brush path {
-            fill: none;
-            stroke: var(--saffron);
-            stroke-width: 11;
-            stroke-linecap: round;
-            opacity: 0.9;
-        }
-
-        /* the graffiti — a taped Polaroid */
+        /* the meme — the comedic beat before the tone shifts */
         .figure {
-            display: inline-block;
-            margin-top: 30px;
-            padding: 10px 10px 24px;
-            background: var(--polaroid);
-            border: 1px solid rgba(38, 26, 18, 0.08);
-            border-radius: 4px;
-            box-shadow: 0 20px 38px -16px rgba(0, 0, 0, 0.55);
-            transform: rotate(1.6deg);
+            margin: 26px auto 0;
         }
-
         .figure img {
             display: block;
-            max-width: min(70vw, 280px);
+            margin: 0 auto;
+            max-width: min(58vw, 250px);
             width: 100%;
             height: auto;
-            border-radius: 2px;
+            border: 1px solid rgba(38, 26, 18, 0.15);
+            border-radius: 10px;
+            box-shadow: 0 14px 30px -14px rgba(0, 0, 0, 0.45);
         }
 
-        .figure .tape--c {
-            top: -14px;
-            left: 50%;
-            transform: translateX(-50%) rotate(2deg);
-            width: 88px;
+        /* red ornament separating the joke from the grave pledge */
+        .divider {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            width: min(64%, 420px);
+            margin: 28px auto;
+            color: var(--accent);
+            font-size: 0.85rem;
+        }
+        .divider::before,
+        .divider::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: rgba(243, 24, 44, 0.45);
+        }
+
+        .solemn {
+            font-family: 'Amiri', 'Cairo', serif;
+            font-size: clamp(1.08rem, 2.5vw, 1.4rem);
+            line-height: 2.2;
+            color: rgba(38, 26, 18, 0.92);
+            max-width: 34em;
+            margin: 0 auto;
+        }
+
+        /* the verse — set in a plaque */
+        .verse {
+            font-family: 'Amiri', 'Cairo', serif;
+            font-size: clamp(1.3rem, 3vw, 1rem);
+            line-height: 2.2;
+            color: var(--ink);
+            max-width: 30em;
+            margin: 30px auto 0;
+            padding: 20px 18px;
+            background: rgba(42, 29, 21, 0.04);
+            border: 1px solid rgba(42, 29, 21, 0.22);
+            border-radius: 10px;
         }
 
         @media (max-width: 560px) {
-            .clause .brush path { stroke-width: 8; }
-            .panel { transform: rotate(-0.6deg); border-radius: 14px; }
-            .tape--l, .tape--r { width: 84px; }
-        }
-
-        @media (prefers-reduced-motion: no-preference) {
-            .clause .brush path {
-                animation: inked 0.9s cubic-bezier(0.22, 0.61, 0.36, 1) both;
-            }
-            @keyframes inked {
-                from { stroke-dasharray: 900; stroke-dashoffset: 900; }
-                to   { stroke-dasharray: 900; stroke-dashoffset: 0; }
-            }
+            .panel { border-radius: 12px; }
+            .panel::after { inset: 10px; }
+            .seal { width: 62px; height: 62px; bottom: -16px; }
         }
     </style>
 </head>
 <body>
     <div class="panel">
         <div class="halo" aria-hidden="true"></div>
-        <div class="tape tape--l" aria-hidden="true"></div>
-        <div class="tape tape--r" aria-hidden="true"></div>
-        <p class="warn">عزيزي الزائر، ينصح بعدم تصفح هذا الموقع لأنه مليان أخطاء برمجية وثغرات تقلب المعدة!</p>
-        <h1>
-            حنا بس جينا ناخذ حلالنا ونمشي،
-            <span class="clause">وموقعك الفاشل هذا خذه وتهنّى فيه..
-                <svg class="brush" viewBox="0 0 300 34" preserveAspectRatio="none" aria-hidden="true">
-                    <path d="M4 24 C 55 30, 100 12, 150 20 S 245 10, 296 22" />
-                </svg>
-            </span>
-        </h1>
+        <div class="seal" aria-hidden="true"></div>
+        <p class="intro">عزيزي الزائر ينصح بعدم تصفح هذا الموقع لأنه مليان أخطاء برمجية وثغرات تقلب المعدة،</p>
+        <p class="punch">جينا ناخذ حلالنا ونمشي، وموقعك الفاشل هذا خذه وتهنّى فيه...</p>
         <div class="figure">
-            <div class="tape tape--c" aria-hidden="true"></div>
             <img src="neededGif.gif" alt="رد فعل" loading="lazy">
         </div>
+        <div class="divider" aria-hidden="true">✦</div>
+        <p class="solemn">ولقاءنا في محكمة قاضيها مالك المُلك في محكمة لا يُظلم فيها أحد ولا تنفع فيها الأقنعة ولا بهتان الألسن حيث يجرّد كل شخص من حجته ويقف الظالم عاريًا أمام الجبار سبحانه</p>
+        <blockquote class="verse">{ وَإِنْ يُكَذِّبُوكَ فَقَدْ كُذِّبَتْ رُسُلٌ مِنْ قَبْلِكَ وَإِلَى اللَّهِ تُرْجَعُ الْأُمُورُ }</blockquote>
     </div>
 </body>
 </html>
