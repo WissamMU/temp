@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>جينا ندور حلالنا</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --espresso: #2A1D15;
+            --espresso-soft: #3A2B20;
+            --sand: #F5EBD4;
+            --saffron: #E8953E;
+            --ink: #261A12;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Cairo', 'Segoe UI', Tahoma, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            background:
+                radial-gradient(60% 45% at 50% 38%, rgba(232, 149, 62, 0.10), transparent 70%),
+                radial-gradient(90% 80% at 15% 108%, rgba(232, 149, 62, 0.06), transparent 60%),
+                var(--espresso);
+            direction: rtl;
+        }
+
+        .panel {
+            position: relative;
+            max-width: 680px;
+            width: 100%;
+            background: var(--sand);
+            border: 1px solid rgba(38, 26, 18, 0.14);
+            border-radius: 28px;
+            padding: clamp(40px, 7vw, 72px) clamp(24px, 6vw, 64px);
+            text-align: center;
+            overflow: hidden;
+            box-shadow:
+                0 1px 0 rgba(255, 255, 255, 0.6) inset,
+                0 24px 60px -20px rgba(0, 0, 0, 0.55);
+        }
+
+        /* faint warm halo resting behind the headline */
+        .panel::before {
+            content: "";
+            position: absolute;
+            top: -28%;
+            left: 50%;
+            width: 130%;
+            height: 60%;
+            transform: translateX(-50%);
+            background: radial-gradient(50% 100% at 50% 100%, rgba(232, 149, 62, 0.18), transparent 72%);
+            pointer-events: none;
+        }
+
+        h1 {
+            position: relative;
+            color: var(--ink);
+            font-weight: 900;
+            font-size: clamp(1.8rem, 5.2vw, 3.3rem);
+            line-height: 1.95;
+            letter-spacing: -0.01em;
+        }
+
+        /* the punchline clause — brush-swept */
+        .clause {
+            position: relative;
+            display: inline-block;
+            padding-bottom: 0.28em;
+        }
+
+        .clause .brush {
+            position: absolute;
+            left: -4%;
+            right: -4%;
+            bottom: 0;
+            height: 0.34em;
+            overflow: visible;
+        }
+
+        .clause .brush path {
+            fill: none;
+            stroke: var(--saffron);
+            stroke-width: 11;
+            stroke-linecap: round;
+            opacity: 0.9;
+        }
+
+        @media (max-width: 560px) {
+            .clause .brush path { stroke-width: 8; }
+            .panel { border-radius: 20px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="panel">
+        <h1>
+            جينا ندور حلالنا،
+            <span class="clause">وفره في جيبك
+                <svg class="brush" viewBox="0 0 300 34" preserveAspectRatio="none" aria-hidden="true">
+                    <path d="M4 24 C 55 30, 100 12, 150 20 S 245 10, 296 22" />
+                </svg>
+            </span>
+        </h1>
+    </div>
+</body>
+</html>
